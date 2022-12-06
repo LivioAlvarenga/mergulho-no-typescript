@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "outDir": "dist/js", // diretório que irá transformar .ts em .js
+    "target": "ES6", // informa a versão do javascript que o compilador irá transformar .ts em .js
+    "noEmitOnError": true, // Somente compila ts p js se não tiver erros.
+  },
+  "include": ["app/**/*"], // onde irei ler os arquivos para fazer a transformação (tudo que estiver dentro de app)
+}
