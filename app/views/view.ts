@@ -1,4 +1,5 @@
-export class View<T> {
+// abstract class não pode criar uma instancia dela, somente os filhos podem usar
+export abstract class View<T> {
   protected elemento: HTMLElement; // protected so eu View tenho acesso a este elemento, mas minhas filhas podem tocar
 
   constructor(seletor: string) {
@@ -9,7 +10,6 @@ export class View<T> {
     this.elemento.innerHTML = this.template(model);
   }
 
-  template(model: T): string {
-    throw Error("Classe filha precisa implementar o método template.");
-  }
+  // tornando o método template para abstract, se a classe filha não implementar o template nem realiza a compilação, dando erro em ambiente DEV.
+  abstract template(model: T): string;
 }
