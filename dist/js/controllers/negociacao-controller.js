@@ -8,6 +8,7 @@ export class NegociacaoController {
     adiciona() {
         const negociacao = this.criaNegociação();
         console.log(negociacao);
+        this.limparForm();
     }
     criaNegociação() {
         const exp = /-/g; // Expressão regular que encontra todos -
@@ -15,5 +16,11 @@ export class NegociacaoController {
         const quantidade = parseInt(this.inputQuantidade.value);
         const valor = parseFloat(this.inputValor.value);
         return new Negociacao(date, quantidade, valor);
+    }
+    limparForm() {
+        this.inputData.value = "";
+        this.inputQuantidade.value = "";
+        this.inputValor.value = "";
+        this.inputData.focus();
     }
 }
