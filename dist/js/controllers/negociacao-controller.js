@@ -15,9 +15,8 @@ export class NegociacaoController {
     adiciona() {
         const negociacao = this.criaNegociação();
         this.negociacoes.adiciona(negociacao);
-        this.negociacoesView.update(this.negociacoes);
-        this.mensagemView.update("Negociação adicionada com sucesso");
         this.limparForm();
+        this.atualizaView();
     }
     criaNegociação() {
         const exp = /-/g; // Expressão regular que encontra todos -
@@ -31,5 +30,9 @@ export class NegociacaoController {
         this.inputQuantidade.value = "";
         this.inputValor.value = "";
         this.inputData.focus();
+    }
+    atualizaView() {
+        this.negociacoesView.update(this.negociacoes);
+        this.mensagemView.update("Negociação adicionada com sucesso");
     }
 }
