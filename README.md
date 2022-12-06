@@ -21,7 +21,7 @@
 
 🚀 Com objetivo de aprofundar em desenvolvimento Front-end, um dos passos importantes é aprender TypeScript. Esse superconjunto baseado em JavaScript permite que você tenha uma experiência mais fluida ao lidar com tipos e orientações a objetos, e pode ser combinado com diferentes frameworks para atingir um resultado super-poderoso.
 
-Este repositório lide de como configurar seu ambiente utilizando TypeScript e quais as vantagens de utilizar a tipagem estática, verá como configurar o seu compilador TS e as melhores práticas para utilizar os recursos do TS. Por fim, vamos organizar e adicionar tipo em seu código ao consumir uma API REST, além de outros conceitos mais avançados de uma das linguagens mais amadas pelos desenvolvedores nos últimos anos.
+Este repositório lida de como configurar seu ambiente utilizando TypeScript e quais as vantagens de utilizar a tipagem estática, verá como configurar o seu compilador TS e as melhores práticas para utilizar os recursos do TS. Por fim, vamos organizar e adicionar tipo em seu código ao consumir uma API REST, além de outros conceitos mais avançados de uma das linguagens mais amadas pelos desenvolvedores nos últimos anos.
 
 Vamos criar processos básicos de um banco para dar contexto as implementações em TS.
 
