@@ -1,5 +1,6 @@
 import { View } from "./view.js";
 export class NegociacoesView extends View {
+    // Ao tornar o método template para protect o único que consegue ve-lo são as classes filhas. 
     template(model) {
         return `
         <table class="table table-hover table-bordered">

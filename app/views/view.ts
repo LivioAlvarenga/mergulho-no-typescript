@@ -11,5 +11,6 @@ export abstract class View<T> {
   }
 
   // tornando o método template para abstract, se a classe filha não implementar o template nem realiza a compilação, dando erro em ambiente DEV.
-  abstract template(model: T): string;
+  protected abstract template(model: T): string;
+  // Ao tornar o método template para protect o único que consegue ve-lo são as classes filhas. 
 }

@@ -3,7 +3,8 @@ import { View } from "./view.js";
 
 export class NegociacoesView extends View<Negociacoes> {
 
-  template(model: Negociacoes): string {
+    // Ao tornar o método template para protect o único que consegue ve-lo são as classes filhas. 
+    protected template(model: Negociacoes): string {
     return `
         <table class="table table-hover table-bordered">
             <thead>
