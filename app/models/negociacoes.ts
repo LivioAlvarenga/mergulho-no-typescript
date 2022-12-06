@@ -7,7 +7,7 @@ export class Negociacoes {
     this.negociacoes.push(negociacao);
   }
 
-  lista(): Array<Negociacao> {
-    return this.negociacoes;
+  lista(): ReadonlyArray<Negociacao> {
+    return this.negociacoes; // tornando o método somente leitura com ReadonlyArray, assim encapsulamos a lista negociações, se modificar, teremos erro de compilação.
   }
 }

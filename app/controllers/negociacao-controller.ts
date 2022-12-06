@@ -17,6 +17,7 @@ export class NegociacaoController {
   adiciona(): void {
     const negociacao = this.criaNegociação();
     this.negociacoes.adiciona(negociacao);
+    console.log(this.negociacoes.lista());
     this.limparForm();
   }
 
