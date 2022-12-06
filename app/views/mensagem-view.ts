@@ -1,9 +1,6 @@
-export class MensagemView {
+import { View } from "./view.js";
 
-  private elemento: HTMLElement;
-  constructor(seletor: string) {
-    this.elemento = document.querySelector(seletor);
-  }
+export class MensagemView extends View {
 
   template(model: string): string {
     return `
