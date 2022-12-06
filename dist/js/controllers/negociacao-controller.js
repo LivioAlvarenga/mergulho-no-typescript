@@ -1,13 +1,16 @@
 import { Negociacao } from "../models/negociacao.js";
+import { Negociacoes } from "../models/negociacoes.js";
 export class NegociacaoController {
     constructor() {
+        this.negociacoes = new Negociacoes(); // Como ja estou atribuindo Negociacoes(), não preciso tipar
         this.inputData = document.querySelector("#data");
         this.inputQuantidade = document.querySelector("#quantidade");
+        console.log(this.negociacoes.lista());
         this.inputValor = document.querySelector("#valor");
     }
     adiciona() {
         const negociacao = this.criaNegociação();
-        console.log(negociacao);
+        this.negociacoes.adiciona(negociacao);
         this.limparForm();
     }
     criaNegociação() {
