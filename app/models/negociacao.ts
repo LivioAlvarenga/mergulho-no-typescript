@@ -1,13 +1,5 @@
 export class Negociacao {
-  private _data: Date; // private para informar atributo privado no TS, posso também usar o public para atributos públicos
-  private _quantidade: number;
-  private _valor: number;
-
-  constructor(data: Date, quantidade: number, valor: number) {
-    this._data = data;
-    this._quantidade = quantidade;
-    this._valor = valor;
-  }
+  constructor(private _data: Date, private _quantidade: number, private _valor: number) {}
 
   // getters
   get data(): Date {
