@@ -7,6 +7,8 @@ export class NegociacaoController {
         this.negociacoes = new Negociacoes(); // Como ja estou atribuindo Negociacoes(), não preciso tipar
         this.negociacoesView = new NegociacoesView("#negociacoesView");
         this.mensagemView = new MensagemView("#mensagemView");
+        this.DOMINGO = 0;
+        this.SABADO = 6;
         this.inputData = document.querySelector("#data");
         this.inputQuantidade = document.querySelector("#quantidade");
         this.inputValor = document.querySelector("#valor");
@@ -14,15 +16,17 @@ export class NegociacaoController {
     }
     adiciona() {
         const negociacao = this.criaNegociação();
-        // 0 a 6, onde 0 = Domingo e 6 = Sábado
-        if (negociacao.data.getDay() > 0 && negociacao.data.getDay() < 6) {
-            this.negociacoes.adiciona(negociacao);
-            this.limparForm();
-            this.atualizaView();
-        }
-        else {
+        if (!this.ehDiaUtil(negociacao.data)) {
             this.mensagemView.update("Apenas negociações em dias úteis são aceitas");
+            return;
         }
+        this.negociacoes.adiciona(negociacao);
+        this.limparForm();
+        this.atualizaView();
+    }
+    ehDiaUtil(data) {
+        // getDay() retorna 0 a 6, onde 0(Domingo) e 6(Sábado)
+        return data.getDay() > this.DOMINGO && data.getDay() < this.SABADO;
     }
     criaNegociação() {
         const exp = /-/g; // Expressão regular que encontra todos -
