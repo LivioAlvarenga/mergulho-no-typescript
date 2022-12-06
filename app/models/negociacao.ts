@@ -15,3 +15,17 @@ export class Negociacao {
     return this._valor * this._quantidade;
   }
 }
+
+/* Uma outra forma de fazer o construtor somente com public readonly
+export class Negociacao {
+  constructor(
+    public readonly data: Date, 
+    public readonly quantidade: number, 
+    public readonly valor: number
+  ) {}
+
+  get volume(): number {
+    return this.valor * this.quantidade;
+  }
+}
+*/
