@@ -20,9 +20,14 @@ export class NegociacaoController {
 
   public adiciona(): void {
     const negociacao = this.criaNegociação();
-    this.negociacoes.adiciona(negociacao);
-    this.limparForm();
-    this.atualizaView();
+    // 0 a 6, onde 0 = Domingo e 6 = Sábado
+    if (negociacao.data.getDay() > 0 && negociacao.data.getDay() < 6) {
+      this.negociacoes.adiciona(negociacao);
+      this.limparForm();
+      this.atualizaView();
+    } else {
+      this.mensagemView.update("Apenas negociações em dias úteis são aceitas");
+    }
   }
 
   private criaNegociação(): Negociacao {
