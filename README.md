@@ -103,6 +103,7 @@ As seguintes ferramentas foram usadas na construção do projeto
     "target": "ES6", // informa a versão do javascript que o compilador irá transformar .ts em .js
     "noEmitOnError": true, // Somente compila ts p js se não tiver erros.
     "noImplicitAny": true, // Não adiciona tipos como any se não informarmos a tipagem
+    "removeComments":true, // Remove os comentários em js apos compilação
   },
   "include": ["app/**/*"], // onde irei ler os arquivos para fazer a transformação (tudo que estiver dentro de app)
 }

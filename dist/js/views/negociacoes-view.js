@@ -1,6 +1,5 @@
 import { View } from "./view.js";
 export class NegociacoesView extends View {
-    // Ao tornar o método template para protect o único que consegue ve-lo são as classes filhas. 
     template(model) {
         return `
         <table class="table table-hover table-bordered">
@@ -28,7 +27,6 @@ export class NegociacoesView extends View {
         </table>
     `;
     }
-    // este método so é visível para esta class, pois é private
     formatarData(data) {
         return new Intl.DateTimeFormat().format(data);
     }
