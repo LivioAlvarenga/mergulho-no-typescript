@@ -4,18 +4,13 @@ import { tempoDeExecucao } from "../decorators/tempo-de-execucao.js";
 // abstract class não pode criar uma instancia dela, somente os filhos podem usar
 export abstract class View<T> {
   protected elemento: HTMLElement; // protected so eu View tenho acesso a este elemento, mas minhas filhas podem tocar
-  private escapar = false; // Não preciso tipar, pois ja atribuímos false e o typescript ja tipa como boolean
 
-  constructor(seletor: string, escapar?: boolean) {
+  constructor(seletor: string) {
     const elemento = document.querySelector(seletor);
     if (elemento) {
       this.elemento = elemento as HTMLElement;
     } else {
       throw Error(`Seletor ${seletor} não existe no DOM`);
-    }
-
-    if (escapar) {
-      this.escapar = escapar;
     }
   }
 
@@ -23,11 +18,6 @@ export abstract class View<T> {
   @tempoDeExecucao(true)
   public update(model: T): void {
     let template = this.template(model);
-    // Protegendo o template de inserção de script, se escapar for true ele verifica com a regex e substitui o script por ""
-    if (this.escapar) {
-      template = template.replace(/<script>[\s\S]*?<\/script>/, "");
-    }
-
     this.elemento.innerHTML = template;
   }
 

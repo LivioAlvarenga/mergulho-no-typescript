@@ -1,9 +1,11 @@
+import { escape } from "../decorators/escape.js";
 import { Negociacoes } from "../models/negociacoes.js";
 import { View } from "./view.js";
 
 export class NegociacoesView extends View<Negociacoes> {
 
     // Ao tornar o método template para protect o único que consegue ve-lo são as classes filhas. 
+    @escape
     protected template(model: Negociacoes): string {
     return `
         <table class="table table-hover table-bordered">
