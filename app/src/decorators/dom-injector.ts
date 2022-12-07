@@ -1,10 +1,14 @@
 export function domInjector(seletor: string) {
   return function (target: any, propertyKey: string) {
+    // criando um cash de elemento para não buscar no DOM sempre que chamarmos o decorator
+    let elemento: HTMLElement;
     const getter = function () {
-      const elemento = document.querySelector(seletor);
-      console.log(
-        `buscando elemento do DOM com o seletor ${seletor} para injetar em ${propertyKey}`
-      );
+      if (!elemento) {
+        elemento = <HTMLElement>document.querySelector(seletor);
+        console.log(
+          `buscando elemento do DOM com o seletor ${seletor} para injetar em ${propertyKey}`
+        );
+      }
       return elemento;
     };
     Object.defineProperty(target, propertyKey, { get: getter });
