@@ -4,9 +4,8 @@ export class Negociacao {
         this._quantidade = _quantidade;
         this._valor = _valor;
     }
-    // getters
     get data() {
-        const data = new Date(this._data.getTime()); // programação defensiva, se modificar a data modifica a copia da data, getTime() cria uma copia de this._data
+        const data = new Date(this._data.getTime());
         return data;
     }
     get quantidade() {
@@ -18,22 +17,11 @@ export class Negociacao {
     get volume() {
         return this._valor * this._quantidade;
     }
+    static criaDe(dataString, quantidadeString, valorString) {
+        const exp = /-/g;
+        const date = new Date(dataString.replace(exp, ","));
+        const quantidade = parseInt(quantidadeString);
+        const valor = parseFloat(valorString);
+        return new Negociacao(date, quantidade, valor);
+    }
 }
-/* Uma outra forma de fazer o construtor somente com public readonly
-export class Negociacao {
-  constructor(
-    private _data: Date,
-    public readonly quantidade: number,
-    public readonly valor: number
-  ) {}
-
-  get volume(): number {
-    return this.valor * this.quantidade;
-  }
-
-  get data(): Date {
-    const data = new Date(this._data.getTime()); // programação defensiva, se modificar a data modifica a copia da data, getTime() cria uma copia de this._data
-    return data;
-  }
-}
-*/

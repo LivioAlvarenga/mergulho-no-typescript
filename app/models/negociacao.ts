@@ -15,6 +15,15 @@ export class Negociacao {
   get volume(): number {
     return this._valor * this._quantidade;
   }
+
+  // Tornando um método static você não precisa instanciar a class para ter acesso ao método.
+  public static criaDe(dataString: string, quantidadeString: string, valorString: string): Negociacao {
+    const exp = /-/g; // Expressão regular que encontra todos -
+    const date = new Date(dataString.replace(exp, ","));
+    const quantidade = parseInt(quantidadeString);
+    const valor = parseFloat(valorString);
+    return new Negociacao(date, quantidade, valor);
+  }
 }
 
 /* Uma outra forma de fazer o construtor somente com public readonly
