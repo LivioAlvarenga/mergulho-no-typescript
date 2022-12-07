@@ -1,3 +1,4 @@
+import { tempoDeExecucao } from "../decorators/tempo-de-execucao.js";
 import { DiasDaSemana } from "../enumerations/dias-da-semana.js";
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
@@ -21,6 +22,7 @@ export class NegociacaoController {
     this.negociacoesView.update(this.negociacoes);
   }
 
+  @tempoDeExecucao()
   public adiciona(): void {
     // Chamar o método(criaDe) sem instanciar a class(Negociacao) so é possível pois o método criaDe é um static
     const negociacao = Negociacao.criaDe(

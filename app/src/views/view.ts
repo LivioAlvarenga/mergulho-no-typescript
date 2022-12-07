@@ -1,3 +1,5 @@
+import { tempoDeExecucao } from "../decorators/tempo-de-execucao.js";
+
 // abstract class não pode criar uma instancia dela, somente os filhos podem usar
 export abstract class View<T> {
   protected elemento: HTMLElement; // protected so eu View tenho acesso a este elemento, mas minhas filhas podem tocar
@@ -16,6 +18,7 @@ export abstract class View<T> {
     }
   }
 
+  @tempoDeExecucao()
   public update(model: T): void {
     let template = this.template(model);
     // Protegendo o template de inserção de script, se escapar for true ele verifica com a regex e substitui o script por ""
