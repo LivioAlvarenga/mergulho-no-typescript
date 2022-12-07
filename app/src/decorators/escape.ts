@@ -4,10 +4,10 @@ export function escape(target: any, propertyKey: string, descriptor: PropertyDes
   descriptor.value = function (...args: any[]) {
     let retorno = métodoOriginal.apply(this, args);
     if (typeof retorno === "string") {
-      console.log(
+      /* console.log(
         `@escape em ação na classe ${this.constructor.name} para o método ${propertyKey}.`
-      );
-      // Protegendo o template de inserção de script, se escapar for true ele verifica com a regex e substitui o script por ""
+      ); */
+      // Protegendo o template de inserção de script, onde estiver o @escape ele verifica com a regex e substitui o script por ""
       retorno = retorno.replace(/<script>[\s\S]*?<\/script>/, "");
     }
     return retorno;

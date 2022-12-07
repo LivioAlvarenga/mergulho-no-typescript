@@ -1,3 +1,5 @@
+import { domInjector } from "../decorators/dom-injector.js";
+import { inspect } from "../decorators/inspect.js";
 import { tempoDeExecucao } from "../decorators/tempo-de-execucao.js";
 import { DiasDaSemana } from "../enumerations/dias-da-semana.js";
 import { Negociacao } from "../models/negociacao.js";
@@ -7,21 +9,21 @@ import { NegociacoesView } from "../views/negociacoes-view.js";
 
 
 export class NegociacaoController {
+  @domInjector("#data")
   private inputData: HTMLInputElement;
+  @domInjector("#quantidade")
   private inputQuantidade: HTMLInputElement;
+  @domInjector("#valor")
   private inputValor: HTMLInputElement;
   private negociacoes = new Negociacoes(); // Como ja estou atribuindo Negociacoes(), não preciso tipar
   private negociacoesView = new NegociacoesView("#negociacoesView");
   private mensagemView = new MensagemView("#mensagemView");
 
   constructor() {
-    // como habilitamos "strictNullChecks": true, agora ele informa que os inputs são O tipo 'HTMLInputElement | null' assim podemos informar que garantimos que ele será HTMLInputElement. Podemos fazer de duas formas: <HTMLInputElement> ou as HTMLInputElement
-    this.inputData = <HTMLInputElement>document.querySelector("#data");
-    this.inputQuantidade = document.querySelector("#quantidade") as HTMLInputElement;
-    this.inputValor = document.querySelector("#valor") as HTMLInputElement;
     this.negociacoesView.update(this.negociacoes);
   }
 
+  @inspect()
   @tempoDeExecucao()
   public adiciona(): void {
     // Chamar o método(criaDe) sem instanciar a class(Negociacao) so é possível pois o método criaDe é um static
