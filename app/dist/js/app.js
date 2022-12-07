@@ -12,7 +12,7 @@ else {
 }
 const bntImportar = document.querySelector("#bnt-importar");
 if (bntImportar) {
-    form.addEventListener("click", () => {
+    bntImportar.addEventListener("click", () => {
         controller.importaDados();
     });
 }
