@@ -7,7 +7,6 @@ import { Negociacoes } from "../models/negociacoes.js";
 import { MensagemView } from "../views/mensagem-view.js";
 import { NegociacoesView } from "../views/negociacoes-view.js";
 
-
 export class NegociacaoController {
   @domInjector("#data")
   private inputData: HTMLInputElement;
@@ -41,6 +40,22 @@ export class NegociacaoController {
     this.negociacoes.adiciona(negociacao);
     this.limparForm();
     this.atualizaView();
+  }
+
+  public importaDados(): void {
+    fetch("http://localhost:8080/dados")
+      .then((response) => response.json())
+      .then((dados: any[]) => {
+        return dados.map((data) => {
+          return new Negociacao(new Date(), data.vezes, data.montante);
+        });
+      })
+      .then((negociacoes) => {
+        for (let negociacao of negociacoes) {
+          this.negociacoes.adiciona(negociacao);
+        }
+        this.negociacoesView.update(this.negociacoes);
+      });
   }
 
   private ehDiaUtil(data: Date) {

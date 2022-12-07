@@ -16,3 +16,12 @@ if (form) {
 } else {
   throw Error("Não foi possível inicializar a aplicação. Verifique se o form existe.");
 }
+
+const bntImportar = document.querySelector("#bnt-importar");
+if (bntImportar) {
+  form.addEventListener("click", () => {
+    controller.importaDados();
+  });
+} else {
+  throw Error("Botão de importação não foi encontrado.");
+}

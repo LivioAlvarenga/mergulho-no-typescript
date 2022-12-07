@@ -165,6 +165,15 @@ $ npm run start
 # A aplicação será aberta na porta:3000 - acesse http://localhost:3000/
 ```
 
+```bash
+# Entre na pasta servidor-api para rodar a API
+$ cd servidor-api
+# Execute o servidor-api
+$ npm start
+# Servidor escutando na porta: 8080
+# Vá no navegador http://localhost:8080/dados e veja o retorno da API
+```
+
 ---
 
 &nbsp;
