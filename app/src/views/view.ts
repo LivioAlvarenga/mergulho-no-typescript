@@ -18,7 +18,7 @@ export abstract class View<T> {
     }
   }
 
-  @tempoDeExecucao()
+  @tempoDeExecucao(true)
   public update(model: T): void {
     let template = this.template(model);
     // Protegendo o template de inserção de script, se escapar for true ele verifica com a regex e substitui o script por ""
