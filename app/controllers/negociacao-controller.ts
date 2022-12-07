@@ -13,9 +13,10 @@ export class NegociacaoController {
   private mensagemView = new MensagemView("#mensagemView");
 
   constructor() {
-    this.inputData = document.querySelector("#data");
-    this.inputQuantidade = document.querySelector("#quantidade");
-    this.inputValor = document.querySelector("#valor");
+    // como habilitamos "strictNullChecks": true, agora ele informa que os inputs são O tipo 'HTMLInputElement | null' assim podemos informar que garantimos que ele será HTMLInputElement. Podemos fazer de duas formas: <HTMLInputElement> ou as HTMLInputElement
+    this.inputData = <HTMLInputElement>document.querySelector("#data");
+    this.inputQuantidade = document.querySelector("#quantidade") as HTMLInputElement;
+    this.inputValor = document.querySelector("#valor") as HTMLInputElement;
     this.negociacoesView.update(this.negociacoes);
   }
 

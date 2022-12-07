@@ -4,7 +4,13 @@ export abstract class View<T> {
   private escapar = false; // Não preciso tipar, pois ja atribuímos false e o typescript ja tipa como boolean
 
   constructor(seletor: string, escapar?: boolean) {
-    this.elemento = document.querySelector(seletor);
+    const elemento = document.querySelector(seletor);
+    if (elemento) {
+      this.elemento = elemento as HTMLElement;
+    } else {
+      throw Error(`Seletor ${seletor} não existe no DOM`);
+    }
+
     if (escapar) {
       this.escapar = escapar;
     }
@@ -22,5 +28,5 @@ export abstract class View<T> {
 
   // tornando o método template para abstract, se a classe filha não implementar o template nem realiza a compilação, dando erro em ambiente DEV.
   protected abstract template(model: T): string;
-  // Ao tornar o método template para protect o único que consegue ve-lo são as classes filhas. 
+  // Ao tornar o método template para protect o único que consegue ve-lo são as classes filhas.
 }
