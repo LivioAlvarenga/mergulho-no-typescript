@@ -169,7 +169,7 @@ $ npm run start
 # Entre na pasta servidor-api para rodar a API
 $ cd servidor-api
 # Execute o servidor-api
-$ npm start
+$ npm run start
 # Servidor escutando na porta: 8080
 # Vá no navegador http://localhost:8080/dados e veja o retorno da API
 ```

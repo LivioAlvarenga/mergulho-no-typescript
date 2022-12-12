@@ -1,6 +1,7 @@
+import { Imprimivel } from "../utils/imprimivel.js";
 import { Negociacao } from "./negociacao.js";
 
-export class Negociacoes {
+export class Negociacoes extends Imprimivel{
   private negociacoes: Array<Negociacao> = []; // Array<Negociacao> = Negociacao[]
 
   public adiciona(negociacao: Negociacao): void {
@@ -11,4 +12,9 @@ export class Negociacoes {
   public lista(): ReadonlyArray<Negociacao> {
     return this.negociacoes; // tornando o método somente leitura com ReadonlyArray, assim encapsulamos a lista negociações, se modificar, teremos erro de compilação.
   }
+
+  public paraTexto(): string {
+    return JSON.stringify(this.negociacoes, null, 2);
+  }
+
 }
