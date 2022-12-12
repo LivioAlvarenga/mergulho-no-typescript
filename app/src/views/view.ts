@@ -1,5 +1,3 @@
-import { inspect } from "../decorators/inspect.js";
-import { tempoDeExecucao } from "../decorators/tempo-de-execucao.js";
 
 // abstract class não pode criar uma instancia dela, somente os filhos podem usar
 export abstract class View<T> {
