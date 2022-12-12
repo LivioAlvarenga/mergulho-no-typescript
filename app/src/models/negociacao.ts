@@ -39,6 +39,14 @@ export class Negociacao implements Imprimivel {
       Valor: ${this.valor},
     `;
   }
+
+  public ehIgual(negociacao: Negociacao): boolean {
+    return (
+      this.data.getDate() === negociacao.data.getDate() &&
+      this.data.getMonth() === negociacao.data.getMonth() &&
+      this.data.getFullYear() === negociacao.data.getFullYear()
+    );
+  }
 }
 
 /* Uma outra forma de fazer o construtor somente com public readonly

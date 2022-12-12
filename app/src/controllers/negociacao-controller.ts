@@ -47,12 +47,21 @@ export class NegociacaoController {
   }
 
   public importaDados(): void {
-    this.negociacoesService.obterNegociacoesDoDia().then((negociacoes) => {
-      for (let negociacao of negociacoes) {
-        this.negociacoes.adiciona(negociacao);
-      }
-      this.negociacoesView.update(this.negociacoes);
-    });
+    this.negociacoesService
+      .obterNegociacoesDoDia()
+      .then((negociacoesDeHoje) => {
+        return negociacoesDeHoje.filter((negociacoesDeHoje) => {
+          return !this.negociacoes
+            .lista()
+            .some((negociacao) => negociacao.ehIgual(negociacoesDeHoje));
+        });
+      })
+      .then((negociacoes) => {
+        for (let negociacao of negociacoes) {
+          this.negociacoes.adiciona(negociacao);
+        }
+        this.negociacoesView.update(this.negociacoes);
+      });
   }
 
   private ehDiaUtil(data: Date) {
